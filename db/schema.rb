@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_15_102829) do
+ActiveRecord::Schema.define(version: 2022_07_15_130518) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
-    t.bigint "quotation_id", null: false
+    t.bigint "room_id", null: false
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["quotation_id"], name: "index_categories_on_quotation_id"
+    t.index ["room_id"], name: "index_categories_on_room_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 2022_07_15_102829) do
     t.string "address_2"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_customers_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -42,17 +44,18 @@ ActiveRecord::Schema.define(version: 2022_07_15_102829) do
     t.bigint "task_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "m2"
     t.index ["task_id"], name: "index_products_on_task_id"
   end
 
   create_table "quotations", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "customer_id", null: false
-    t.string "title"
     t.integer "total_price"
     t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "number"
     t.index ["customer_id"], name: "index_quotations_on_customer_id"
     t.index ["user_id"], name: "index_quotations_on_user_id"
   end
@@ -85,7 +88,8 @@ ActiveRecord::Schema.define(version: 2022_07_15_102829) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "categories", "quotations"
+  add_foreign_key "categories", "rooms"
+  add_foreign_key "customers", "users"
   add_foreign_key "products", "tasks"
   add_foreign_key "quotations", "customers"
   add_foreign_key "quotations", "users"

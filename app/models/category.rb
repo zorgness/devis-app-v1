@@ -1,3 +1,4 @@
 class Category < ApplicationRecord
-  belongs_to :quotation
+  belongs_to :room
+  has_many :tasks
 end

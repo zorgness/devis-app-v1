@@ -1,0 +1,33 @@
+<h1>Devis N°<%= @quotation.number %></h1>
+<p><%= @quotation.date %></p>
+
+
+<div class="customer-container">
+  <h3><%= @quotation.customer.first_name %> <%= @quotation.customer.last_name %> </h3>
+  <p><%= @quotation.customer.address %></p>
+</div>
+
+<div class="quotation-detail">
+  <h5>Details</h5>
+  <ul>
+    <li>Mise en place chantier</li>
+  </ul>
+  <% @quotation.rooms.each do |room|%>
+    <h6><%= room.name.capitalize %></h6>
+    <% room.categories.each do |category|%>
+
+      <% category.tasks.each do |task|%>
+
+    <ul>
+      <% task.products.each do |product|  %>
+      <li><%= task.name.capitalize %> <%= product.name %>(s)  <% if product.number_of_items %><%= product.number_of_items %> unitée(s)<% end %> <% if product.m2 %> <%= product.m2 %> m2 <% end %></li>
+      <% end %>
+    </ul>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="quotation-total">
+  <p>Prix forfaitaire :  <%= @quotation.total_price %> Euros</p>
+</div>
