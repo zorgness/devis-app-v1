@@ -1,0 +1,13 @@
+<h1>Liste clients</h1>
+
+<div class="new-customer">
+  <%= link_to 'ajouter un client', new_customer_path, class: 'btn btn-primary' %>
+</div>
+
+<ul>
+  <% @customers.each do |customer| %>
+    <%= link_to customer_path(customer) do %>
+      <li><%= customer.first_name%> <%= customer.last_name%>  </li>
+    <% end %>
+  <% end %>
+</ul>
