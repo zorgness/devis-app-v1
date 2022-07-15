@@ -1,12 +1,16 @@
 <h1>Tous mes Devis</h1>
 
+<div class="quotation-new">
+  <%= link_to 'nouveau devis', new_quotation_path, class: 'btn btn-primary'%>
+</div>
+
 <div class="quotations-container">
 <% @quotations.each do |quotation|%>
   <%= link_to quotation_path(quotation) do%>
       <div class="card" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title">Devis N°<%= quotation.number%></h5>
-        <h6 class="card-subtitle mb-2 text-muted"><%= quotation.customer.first_name%> <%= quotation.customer.last_name%></h6>
+        <h6 class="card-subtitle mb-2 text-muted"><%= quotation.customer.first_name.capitalize%> <%= quotation.customer.last_name.capitalize%></h6>
         <p class="card-text"><%= quotation.customer.address%></p>
         <p class="card-text"><%= quotation.date %></p>
 

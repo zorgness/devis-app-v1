@@ -1,13 +1,16 @@
-<h1>Devis N°<%= @quotation.number %></h1>
-<p><%= @quotation.date %></p>
-
-
-<div class="customer-container">
-  <h3><%= @quotation.customer.first_name %> <%= @quotation.customer.last_name %> </h3>
-  <p><%= @quotation.customer.address %></p>
+<div class="quotation-header">
+  <h1>Devis N°<%= @quotation.number %></h1>
+  <p><%= @quotation.date %></p>
 </div>
 
-<div class="quotation-detail">
+<%= link_to customer_path( @quotation.customer) do %>
+<div class="customer-container">
+  <h3><%= @quotation.customer.first_name.capitalize %> <%= @quotation.customer.last_name.capitalize %> </h3>
+  <p><%= @quotation.customer.address %></p>
+</div>
+<% end %>
+
+<div class="quotation-details">
   <h5>Details</h5>
   <ul>
     <li>Mise en place chantier</li>
@@ -29,11 +32,16 @@
 </div>
 
 <div class="quotation-total">
-  <p>Prix forfaitaire :  <%= @quotation.total_price %> Euros</p>
+  <p style="text-align:center;">Prix forfaitaire :  <strong><%= @quotation.total_price %></strong> Euros</p>
 </div>
 
+<p style="color: green; font-size: 24px; font-weight: bold; text-align: center">A venir</p>
+<div class="devis-btn">
 
-<div class="export-pdf">
-<p>A venir</p>
-  <button>exporter en pdf</button>
+  <button class="btn btn-primary">ajouter piéces</button>
+  <button class="btn btn-info">ajouter tâches</button>
+  <button class="btn btn-success">ajouter produits</button>
+  <button class="btn btn-dark">editer devis</button>
+  <button class="btn btn-warning">exporter en pdf</button>
+  <button class="btn btn-danger">supprimer</button>
 </div>

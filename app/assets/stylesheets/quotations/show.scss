@@ -1,0 +1,27 @@
+a {
+  text-decoration: none;
+}
+.quotation-header {
+  margin: 16px;
+}
+
+.quotation-details {
+  margin: 16px;
+}
+.devis-btn {
+  margin: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.customer-container {
+  margin: 24px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  h3 {text-align: center;}
+  p {text-align: center;}
+}
