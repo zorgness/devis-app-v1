@@ -7,7 +7,7 @@
 <ul>
   <% @customers.each do |customer| %>
     <%= link_to customer_path(customer) do %>
-      <li><%= customer.first_name%> <%= customer.last_name%>  </li>
+      <li style="margin-top: 12px;"><%= customer.first_name.capitalize%> <%= customer.last_name.capitalize%>  </li>
     <% end %>
   <% end %>
 </ul>
