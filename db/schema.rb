@@ -10,10 +10,68 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_15_100809) do
+ActiveRecord::Schema.define(version: 2022_07_15_102829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.bigint "quotation_id", null: false
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["quotation_id"], name: "index_categories_on_quotation_id"
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "phone"
+    t.string "address"
+    t.string "address_2"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.integer "number_of_items"
+    t.integer "price"
+    t.bigint "task_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["task_id"], name: "index_products_on_task_id"
+  end
+
+  create_table "quotations", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "customer_id", null: false
+    t.string "title"
+    t.integer "total_price"
+    t.date "date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_quotations_on_customer_id"
+    t.index ["user_id"], name: "index_quotations_on_user_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.bigint "quotation_id", null: false
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["quotation_id"], name: "index_rooms_on_quotation_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.bigint "category_id", null: false
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_tasks_on_category_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +85,10 @@ ActiveRecord::Schema.define(version: 2022_07_15_100809) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "categories", "quotations"
+  add_foreign_key "products", "tasks"
+  add_foreign_key "quotations", "customers"
+  add_foreign_key "quotations", "users"
+  add_foreign_key "rooms", "quotations"
+  add_foreign_key "tasks", "categories"
 end
