@@ -1,4 +1,4 @@
-<h1>Nouveau devis</h1>
+<h1>Editer devis</h1>
 <%= simple_form_for [@customer,@quotation] do |f| %>
   <%= f.association :customer, label_method: lambda { |customer| "#{customer.first_name}  #{customer.last_name}" }%>
   <%= f.input :number %>
