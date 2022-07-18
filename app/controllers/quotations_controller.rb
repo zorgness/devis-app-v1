@@ -19,7 +19,7 @@ class QuotationsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        send_data(pdf, disposition: 'inline', filename: "Show_ID_#{params[:id]}", type: 'application/pdf')
+        send_data(pdf, disposition: 'inline', filename: "DEVIS_ID_#{params[:id]}", type: 'application/pdf')
       end
     end
   end
