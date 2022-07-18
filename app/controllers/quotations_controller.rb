@@ -7,6 +7,24 @@ class QuotationsController < ApplicationController
     @quotation = Quotation.find(params[:id])
   end
 
+  def pdf
+    @quotation = Quotation.find(params[:id])
+    html_string = render_to_string(
+      {
+        template: 'quotations/pdf.html.erb',
+        locals: { id: params[:id] }
+      }
+    )
+    pdf = Grover.new(html_string, format: 'A4', display_url: "http://localhost:3000").to_pdf
+    respond_to do |format|
+      format.html
+      format.pdf do
+        send_data(pdf, disposition: 'inline', filename: "Show_ID_#{params[:id]}", type: 'application/pdf')
+      end
+    end
+  end
+
+
   def new
     @customers = Customer.where(user_id: current_user.id)
     @quotation = Quotation.new

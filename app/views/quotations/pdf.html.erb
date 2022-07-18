@@ -1,0 +1,41 @@
+
+<div class="quotation-header">
+  <h1>Devis N°<%= @quotation.number %></h1>
+  <p><%= @quotation.date %></p>
+</div>
+
+<%= link_to customer_path( @quotation.customer) do %>
+<div class="customer-container">
+  <h3><%= @quotation.customer.first_name.capitalize %> <%= @quotation.customer.last_name.capitalize %> </h3>
+  <p><%= @quotation.customer.address %></p>
+</div>
+<% end %>
+
+<div class="quotation-details">
+  <h5>Details</h5>
+  <ul>
+    <li>Mise en place chantier</li>
+  </ul>
+  <% @quotation.rooms.each do |room|%>
+    <h6><%= room.name.capitalize %></h6>
+    <% room.tasks.each do |task|%>
+
+    <ul>
+      <li><%= task.action.name.capitalize %> <%= "#{task.product.name}(s)" if task.product  %> <%= "#{task.element.name}" if task.element %> <%= "#{task.number_of_items} unitée(s)" if task.number_of_items  %> <%= "#{task.m2} m2" if task.m2  %>  </li>
+    </ul>
+
+    <% end %>
+  <% end %>
+</div>
+
+<div class="quotation-total">
+  <p style="text-align:center;">Prix forfaitaire :  <strong><%= @quotation.total_price %></strong> Euros</p>
+</div>
+
+
+
+
+<div class="devis-btn">
+
+   <%= link_to "Valider",  to_pdf_path(@quotation), class: 'btn-flat'%>
+</div>
