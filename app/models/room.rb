@@ -1,4 +1,4 @@
 class Room < ApplicationRecord
   belongs_to :quotation
-  has_many :categories
+  has_many :tasks
 end
