@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   .logo-martin {
-    width: 80%;
+    width: 88%;
     margin-left: auto;
     margin-right: auto;
   }
@@ -11,9 +11,9 @@
 }
 
 .quotation-customer {
+  margin-right: 32px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
 }
 .quotation-bottom {
   display: flex;

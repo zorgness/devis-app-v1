@@ -9,7 +9,7 @@
 Task.destroy_all
 Product.destroy_all
 Element.destroy_all
-Action.destroy_all
+Activity.destroy_all
 Room.destroy_all
 Quotation.destroy_all
 Customer.destroy_all
@@ -54,20 +54,20 @@ e2.save
 e3 = Element.new(name: 'sol')
 e3.save
 
-a1 = Action.new(name: 'pose')
+a1 = Activity.new(name: 'pose')
 a1.save
 
-a2 = Action.new(name: 'creation')
+a2 = Activity.new(name: 'creation')
 a2.save
 
-a3 = Action.new(name: 'installation')
+a3 = Activity.new(name: 'installation')
 a3.save
 
-t1 = Task.new(room_id: r.id, product_id: p1.id, action_id: a1.id, number_of_items: 3)
+t1 = Task.new(room_id: r.id, product_id: p1.id, activity_id: a1.id, number_of_items: 3)
 t1.save
 
-t2 = Task.new(room_id: r.id, element_id: e1.id, action_id: a2.id, m2: 4)
+t2 = Task.new(room_id: r.id, element_id: e1.id, activity_id: a2.id, m2: 4)
 t2.save
 
-t3 = Task.new(room_id: r2.id, product_id: p3.id, action_id: a3.id, number_of_items: 1)
+t3 = Task.new(room_id: r2.id, product_id: p3.id, activity_id: a3.id, number_of_items: 1)
 t3.save
