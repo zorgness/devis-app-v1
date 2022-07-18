@@ -9,6 +9,7 @@ class ActionsController < ApplicationController
 
   def create
     @action = Action.new(action_params)
+    p action_params
     if @action.save
       redirect_to actions_path
     else
