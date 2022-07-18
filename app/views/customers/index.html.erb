@@ -7,7 +7,13 @@
 <ul>
   <% @customers.each do |customer| %>
     <%= link_to customer_path(customer) do %>
-      <li style="margin-top: 12px;"><%= customer.first_name.capitalize%> <%= customer.last_name.capitalize%>  </li>
+      <li style="margin-top: 12px;"><%= customer.first_name.capitalize%> <%= customer.last_name.capitalize%>
+      <%= link_to edit_customer_path(customer)  do %>
+                                <i class="fa-solid fa-pen" style=" font-size: 20px; color: green; margin-left: 16px"></i>
+                              <% end %>
+      <%= link_to customer_path(customer), method: :delete, data: { confirm: "Are you sure?" } do %>
+                                <i class="fa-solid fa-trash" style=" font-size: 20px; color: red; margin-left: 16px"></i>
+                              <% end %> </li>
     <% end %>
   <% end %>
 </ul>

@@ -16,6 +16,13 @@ class TasksController < ApplicationController
     end
   end
 
+  def destroy
+    @task = Task.find(params[:id])
+    @quotation = @task.room.quotation
+    @task.destroy
+    redirect_to quotation_path(@quotation), notice: 'Task was successfully destroyed.'
+  end
+
   private
 
   def task_params

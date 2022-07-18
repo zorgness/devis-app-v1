@@ -22,6 +22,13 @@ class RoomsController < ApplicationController
     end
   end
 
+  def destroy
+    @room = Room.find(params[:id])
+    @quotation = @room.quotation
+    @room.destroy
+    redirect_to @quotation, notice: 'Room was successfully destroyed.'
+  end
+
   private
 
   def room_params

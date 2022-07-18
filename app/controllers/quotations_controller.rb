@@ -22,6 +22,21 @@ class QuotationsController < ApplicationController
     end
   end
 
+  def edit
+    @quotation = Quotation.find(params[:id])
+  end
+
+  def update
+    @quotation.update(quotation_params)
+    redirect_to quotation_path(@quotation)
+  end
+
+  def destroy
+    @quotation = Quotation.find(params[:id])
+    @quotation.destroy
+    redirect_to quotations_path, notice: 'Quotation was successfully destroyed.'
+  end
+
   private
 
   def quotation_params

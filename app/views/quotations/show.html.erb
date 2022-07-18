@@ -25,11 +25,15 @@
     <li>Mise en place chantier</li>
   </ul>
   <% @quotation.rooms.each do |room|%>
-    <h6><%= room.name.capitalize %></h6>
+    <h6><%= room.name.capitalize %> <%= link_to room_path(room), method: :delete, data: { confirm: "Are you sure?" } do %>
+                                      <i class="fa-solid fa-trash" style=" font-size: 20px; color: red; margin-left: 16px"></i>
+                                    <% end %></h6>
     <% room.tasks.each do |task|%>
 
     <ul>
-      <li><%= task.action.name.capitalize %> <%= "#{task.product.name}(s)" if task.product  %> <%= "#{task.element.name}" if task.element %> <%= "#{task.number_of_items} unitée(s)" if task.number_of_items  %> <%= "#{task.m2} m2" if task.m2  %></li>
+      <li><%= task.action.name.capitalize %> <%= "#{task.product.name}(s)" if task.product  %> <%= "#{task.element.name}" if task.element %> <%= "#{task.number_of_items} unitée(s)" if task.number_of_items  %> <%= "#{task.m2} m2" if task.m2  %>  <%= link_to task_path(task), method: :delete, data: { confirm: "Are you sure?" } do %>
+                                <i class="fa-solid fa-trash" style=" font-size: 20px; color: red; margin-left: 16px"></i>
+                              <% end %> </li>
     </ul>
 
     <% end %>
@@ -42,16 +46,12 @@
 
 <p style="color: blue; font-size: 24px; font-weight: bold; text-align: center">En Test</p>
 <div class="devis-btn">
-  <%= link_to "ajouter piéces",  new_quotation_room_path(@quotation), class: 'btn btn-info' %>
+  <%= link_to "Ajouter piéces",  new_quotation_room_path(@quotation), class: 'btn btn-info' %>
+  <%= link_to "Editer devis",  edit_quotation_path(@quotation), class: 'btn btn-dark' %>
+  <%= link_to "Supprimer devis",  quotation_path(@quotation), method: :delete, class: 'btn btn-danger', data: { confirm: "Are you sure?" } %>
 </div>
 
 <p style="color: green; font-size: 24px; font-weight: bold; text-align: center">A venir</p>
 <div class="devis-btn">
-
-
-  <button class="btn btn-success">ajouter produits</button>
-  <button class="btn btn-success">ajouter elements</button>
-  <button class="btn btn-dark">editer devis</button>
   <button class="btn btn-warning">exporter en pdf</button>
-  <button class="btn btn-danger">supprimer</button>
 </div>

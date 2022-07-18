@@ -14,3 +14,13 @@
 @import "quotations/show";
 @import "customers/index";
 @import "customers/show";
+
+.action-container {
+  margin: 16px;
+  .btn-new-item {
+    display: flex;
+    justify-content: flex-end;
+
+  }
+
+}
