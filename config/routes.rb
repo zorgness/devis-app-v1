@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
+  get 'quotations/:id/pdf', to: 'quotations#pdf', as: :pdf
+  get 'quotations/:id/pdf.pdf', to: 'quotations#pdf', as: :to_pdf
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :actions, only: %i[index new create destroy]
   resources :products, only: %i[index new create destroy]
