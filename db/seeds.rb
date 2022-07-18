@@ -5,9 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Product.destroy_all
+
 Task.destroy_all
-Category.destroy_all
+Product.destroy_all
+Element.destroy_all
+Action.destroy_all
 Room.destroy_all
 Quotation.destroy_all
 Customer.destroy_all
@@ -19,8 +21,14 @@ u.save
 c = Customer.new(first_name: 'denis', last_name: 'trolel', email: 'denis@gmail.com', address: '5 rue fortia, Marseille', phone: '0708091112', user_id: u.id)
 c.save
 
+c2 = Customer.new(first_name: 'marc', last_name: 'dubois', email: 'marc@gmail.com', address: '19 rue pavillion, Aix-en-Provence', phone: '0666778899', user_id: u.id)
+c2.save
+
 q = Quotation.new(user_id: u.id, customer_id: c.id, number: 221224, date: Date.today, total_price: 3400)
 q.save
+
+q2 = Quotation.new(user_id: u.id, customer_id: c2.id, number: 221225, date: Date.today + 1, total_price: 6200)
+q2.save
 
 r = Room.new(quotation_id: q.id, name: 'salon')
 r.save
@@ -28,29 +36,38 @@ r.save
 r2 = Room.new(quotation_id: q.id, name: 'salle de bain')
 r2.save
 
-c = Category.new(room_id: r.id, name: 'électricité')
-c.save
-
-c2 = Category.new(room_id: r.id, name: 'maçonnerie')
-c2.save
-
-c3 = Category.new(room_id: r2.id, name: 'plomberie')
-c3.save
-
-t1 = Task.new(category_id: c.id, name: 'pose')
-t1.save
-
-t2 = Task.new(category_id: c2.id, name: 'creation')
-t2.save
-
-t3 = Task.new(category_id: c3.id, name: 'pose')
-t3.save
-
-p1 = Product.new(task_id: t1.id, name: 'spot', number_of_items: 3, price: 21, description: 'spot patère blanc')
+p1 = Product.new(name: 'spot', description: 'spot patère blanc')
 p1.save
 
-p2 = Product.new(task_id: t2.id, name: 'cloison', m2: 3, price: 30, description: 'plaquo')
+p2 = Product.new(name: 'climatisation', description: 'climatiseur reversible')
 p2.save
 
-p3 = Product.new(task_id: t3.id, name: 'évier', number_of_items: 1, price: 220, description: 'vasque salle de bain')
+p3 = Product.new(name: 'évier', description: 'vasque salle de bain')
 p3.save
+
+e1 = Element.new(name: 'mur')
+e1.save
+
+e2 = Element.new(name: 'plafond')
+e2.save
+
+e3 = Element.new(name: 'sol')
+e3.save
+
+a1 = Action.new(name: 'pose')
+a1.save
+
+a2 = Action.new(name: 'creation')
+a2.save
+
+a3 = Action.new(name: 'installation')
+a3.save
+
+t1 = Task.new(room_id: r.id, product_id: p1.id, action_id: a1.id, number_of_items: 3)
+t1.save
+
+t2 = Task.new(room_id: r.id, element_id: e1.id, action_id: a2.id, m2: 4)
+t2.save
+
+t3 = Task.new(room_id: r2.id, product_id: p3.id, action_id: a3.id, number_of_items: 1)
+t3.save

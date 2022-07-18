@@ -25,3 +25,11 @@ a {
   h3 {text-align: center;}
   p {text-align: center;}
 }
+
+.room-collection {
+  margin: 24px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 12px;
+}

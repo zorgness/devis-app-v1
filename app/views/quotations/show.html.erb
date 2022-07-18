@@ -1,3 +1,12 @@
+<div class="room-collection">
+  <% @quotation.rooms.each do |room| %>
+
+    <%= link_to new_room_task_path(room), class:"button-34 green"  do %>
+      <%= room.name %>
+    <% end %>
+  <% end %>
+
+</div>
 <div class="quotation-header">
   <h1>Devis N°<%= @quotation.number %></h1>
   <p><%= @quotation.date %></p>
@@ -17,16 +26,12 @@
   </ul>
   <% @quotation.rooms.each do |room|%>
     <h6><%= room.name.capitalize %></h6>
-    <% room.categories.each do |category|%>
-
-      <% category.tasks.each do |task|%>
+    <% room.tasks.each do |task|%>
 
     <ul>
-      <% task.products.each do |product|  %>
-      <li><%= task.name.capitalize %> <%= product.name %>(s)  <% if product.number_of_items %><%= product.number_of_items %> unitée(s)<% end %> <% if product.m2 %> <%= product.m2 %> m2 <% end %></li>
-      <% end %>
+      <li><%= task.action.name.capitalize %> <%= "#{task.product.name}(s)" if task.product  %> <%= "#{task.element.name}" if task.element %> <%= "#{task.number_of_items} unitée(s)" if task.number_of_items  %> <%= "#{task.m2} m2" if task.m2  %></li>
     </ul>
-      <% end %>
+
     <% end %>
   <% end %>
 </div>
@@ -35,12 +40,17 @@
   <p style="text-align:center;">Prix forfaitaire :  <strong><%= @quotation.total_price %></strong> Euros</p>
 </div>
 
+<p style="color: blue; font-size: 24px; font-weight: bold; text-align: center">En Test</p>
+<div class="devis-btn">
+  <%= link_to "ajouter piéces",  new_quotation_room_path(@quotation), class: 'btn btn-info' %>
+</div>
+
 <p style="color: green; font-size: 24px; font-weight: bold; text-align: center">A venir</p>
 <div class="devis-btn">
 
-  <button class="btn btn-primary">ajouter piéces</button>
-  <button class="btn btn-info">ajouter tâches</button>
+
   <button class="btn btn-success">ajouter produits</button>
+  <button class="btn btn-success">ajouter elements</button>
   <button class="btn btn-dark">editer devis</button>
   <button class="btn btn-warning">exporter en pdf</button>
   <button class="btn btn-danger">supprimer</button>
