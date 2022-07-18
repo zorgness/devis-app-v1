@@ -63,6 +63,9 @@ a2.save
 a3 = Activity.new(name: 'installation')
 a3.save
 
+a4 = Activity.new(name: 'demolition')
+a4.save
+
 t1 = Task.new(room_id: r.id, product_id: p1.id, activity_id: a1.id, number_of_items: 3)
 t1.save
 

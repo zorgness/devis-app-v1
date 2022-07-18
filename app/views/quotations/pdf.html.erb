@@ -1,6 +1,6 @@
 <div class="pdf-container">
 <div class="banner-logo-martin">
-  <%= image_tag "banner.png", class: 'logo-martin'%>
+  <img src="https://i.ibb.co/pZdsJy5/Capture-d-e-cran-2022-07-18-a-17-56-38.png" alt="banner" class="logo-martin" >
 </div>
 <div class="quotation-header">
   <p style="text-decoration: underline; margin-left: 16px;"><strong><%= @quotation.date.strftime("%d/%m/%Y") %></strong></p>
@@ -8,21 +8,21 @@
 
 
 <div class="quotation-customer">
-  <div><h3><strong style="text-decoration: underline;"><%= @quotation.customer.first_name.parameterize.capitalize %> <%= @quotation.customer.last_name.parameterize.capitalize %></strong> </h3></div>
+  <h3 style="text-align: end;"><strong style="text-decoration: underline;"><%= @quotation.customer.first_name.parameterize.upcase %> <%= @quotation.customer.last_name.parameterize.upcase %></strong> </h3>
 </div>
 
 <div class="quotation-customer">
-  <div><p><%= @quotation.customer.address.split(",")[0].parameterize.upcase %></p></div>
+  <p style="text-align: end;"><%= @quotation.customer.address.split(",")[0].parameterize.upcase %></p>
 </div>
 
 <div class="quotation-customer">
-  <div><p><%= @quotation.customer.address.split(",")[1].parameterize.upcase %></p></div>
+  <p style="text-align: end;"><%= @quotation.customer.address.split(",")[1].parameterize.upcase %></p>
 </div>
 
 
 <div>
   <h4 style="text-align:center;text-decoration: underline;"><strong>DEVIS</strong></h4>
-  <h4 style="text-align:center; margin-bottom: 80px;text-decoration: underline;"><strong>N <%= @quotation.number %></strong></h4>
+  <h4 style="text-align:center; margin-bottom: 44px;text-decoration: underline;"><strong>N <%= @quotation.number %></strong></h4>
 </div>
 
 <div class="quotation-details">
@@ -47,23 +47,24 @@
 </div>
 
 <div class="signature">
-  <h5 style="text-align:center; margin-bottom: 80px;text-decoration: underline;"><strong>SIGNATURE</strong></h5>
+  <h5 style="text-align:center; margin: 44px;text-decoration: underline;"><strong>SIGNATURE</strong></h5>
 </div>
 
-<div class="quotation-bottom">
-<div class="quotation-bottom1">
-  <div>Assurance MAAF</div>
-  <div><strong style="color:black;">Martin Rudy</strong></div>
-  <div>25, Rue Victor Leydet</div>
+
+    <div class="quotation-bottom" style="width:88%;text-align:center;">
+      <p style="text-align: start; float:left; width:200px;">Assurance MAAF</p>
+      <p style="width:200px; display: inline-block;margin:0 auto;"><strong style="color:black;">Martin Rudy</strong></p>
+       <p style="text-align: end; float:right; width:200px;">25, Rue Victor Leydet</p>
+    </div>
+
+    <div class="quotation-bottom"  style="width:88%;text-align:center;">
+        <p style="text-align: start; float:left;width:200px;">113396903W-MCE-002</p>
+        <p style="width:200px; display: inline-block;">Siren : 522 240 712</p>
+        <p style="text-align: end; float:right; width:200px;">13100 Aix en Provence</p>
+    </div>
+
 </div>
 
-<div class="quotation-bottom2">
-  <div>113396903W-MCE-002</div>
-  <div>Siren : 522 240 712</div>
-  <div>13100 Aix en Provence</div>
-</div>
-</div>
-</div>
 
 
 
@@ -72,7 +73,9 @@
 <% unless action_name == 'pdf.pdf'%>
 <div class="devis-btn">
 
-   <%= link_to "Valider", to_pdf_path(@quotation), class: 'btn-flat'%>
+   <%= link_to to_pdf_path(@quotation) do %>
+    <i class="fa-solid fa-check" style="font-size: 16px; color: #000000"></i>
+   <% end %>
 </div>
 
 <% end %>
