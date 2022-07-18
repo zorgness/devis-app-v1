@@ -45,6 +45,7 @@ class QuotationsController < ApplicationController
   end
 
   def update
+    @quotation = Quotation.find(params[:id])
     @quotation.update(quotation_params)
     redirect_to quotation_path(@quotation)
   end
