@@ -10,12 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_18_113800) do
+ActiveRecord::Schema.define(version: 2022_07_18_183013) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "actions", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "activities", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -76,7 +82,9 @@ ActiveRecord::Schema.define(version: 2022_07_18_113800) do
     t.bigint "product_id"
     t.bigint "action_id"
     t.bigint "element_id"
+    t.bigint "activity_id"
     t.index ["action_id"], name: "index_tasks_on_action_id"
+    t.index ["activity_id"], name: "index_tasks_on_activity_id"
     t.index ["element_id"], name: "index_tasks_on_element_id"
     t.index ["product_id"], name: "index_tasks_on_product_id"
     t.index ["room_id"], name: "index_tasks_on_room_id"
@@ -99,6 +107,7 @@ ActiveRecord::Schema.define(version: 2022_07_18_113800) do
   add_foreign_key "quotations", "users"
   add_foreign_key "rooms", "quotations"
   add_foreign_key "tasks", "actions"
+  add_foreign_key "tasks", "activities"
   add_foreign_key "tasks", "elements"
   add_foreign_key "tasks", "products"
   add_foreign_key "tasks", "rooms"

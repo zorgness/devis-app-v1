@@ -1,4 +1,4 @@
-class Element < ApplicationRecord
+class Activity < ApplicationRecord
   has_many :tasks, dependent: :destroy
   validates :name, presence: true, uniqueness: true
 end

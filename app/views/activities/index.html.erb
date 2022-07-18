@@ -1,0 +1,15 @@
+<div class="action-container">
+<h1>Actions</h1>
+
+<div class="btn-new-item">
+  <%= link_to 'nouvelle action', new_activity_path, class: 'btn-flat'%>
+</div>
+
+<% @activities.each do |activity|%>
+  <ul>
+    <li><%= activity.name %>  <%= link_to activity_path(activity), method: :delete, data: { confirm: "Are you sure?" } do %>
+                                <i class="fa-solid fa-trash" style=" font-size: 20px; color: red; margin-left: 16px"></i>
+                              <% end %> </li>
+  </ul>
+<% end %>
+</div>

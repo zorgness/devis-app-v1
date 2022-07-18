@@ -3,18 +3,26 @@
   <%= image_tag "banner.png", class: 'logo-martin'%>
 </div>
 <div class="quotation-header">
-  <p><%= @quotation.date %></p>
+  <p style="text-decoration: underline; margin-left: 16px;"><strong><%= @quotation.date.strftime("%d/%m/%Y") %></strong></p>
 </div>
 
 
-<div class="quotation-customer ">
-  <div><h3><%= @quotation.customer.first_name.capitalize %> <%= @quotation.customer.last_name.capitalize %> </h3></div>
-  <div><p><%= @quotation.customer.address %></p></div>
+<div class="quotation-customer">
+  <div><h3><strong style="text-decoration: underline;"><%= @quotation.customer.first_name.parameterize.capitalize %> <%= @quotation.customer.last_name.parameterize.capitalize %></strong> </h3></div>
 </div>
+
+<div class="quotation-customer">
+  <div><p><%= @quotation.customer.address.split(",")[0].parameterize.upcase %></p></div>
+</div>
+
+<div class="quotation-customer">
+  <div><p><%= @quotation.customer.address.split(",")[1].parameterize.upcase %></p></div>
+</div>
+
 
 <div>
-  <h3 style="text-align:center;text-decoration: underline;">DEVIS</h3>
-  <h3 style="text-align:center; margin-bottom: 80px;text-decoration: underline;">N <%= @quotation.number %></h3>
+  <h4 style="text-align:center;text-decoration: underline;"><strong>DEVIS</strong></h4>
+  <h4 style="text-align:center; margin-bottom: 80px;text-decoration: underline;"><strong>N <%= @quotation.number %></strong></h4>
 </div>
 
 <div class="quotation-details">
@@ -27,7 +35,7 @@
     <% room.tasks.each do |task|%>
 
     <ul>
-      <li><%= task.action.name.upcase %> <%= "#{task.product.name.upcase}(S)" if task.product  %> <%= "#{task.element.name.upcase}(S)" if task.element %> <%= "#{task.number_of_items} UNITEE(S)" if task.number_of_items  %> <%= "#{task.m2} M2" if task.m2  %>  </li>
+      <li><%= task.activity.name.parameterize.upcase %> <%= "#{task.product.name.parameterize.upcase}(S)" if task.product  %> <%= "#{task.element.name.parameterize.upcase}(S)" if task.element %> <%= "#{task.number_of_items} UNITEE(S)" if task.number_of_items  %> <%= "#{task.m2} M2" if task.m2  %>  </li>
     </ul>
 
     <% end %>
@@ -39,7 +47,7 @@
 </div>
 
 <div class="signature">
-  <h5 style="text-align:center; margin-bottom: 80px;text-decoration: underline;">SIGNATURE</h5>
+  <h5 style="text-align:center; margin-bottom: 80px;text-decoration: underline;"><strong>SIGNATURE</strong></h5>
 </div>
 
 <div class="quotation-bottom">

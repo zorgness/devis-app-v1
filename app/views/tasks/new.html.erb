@@ -1,6 +1,6 @@
-<h1><%= @room.name %></h1>
+<h1><%= @room.name.capitalize %></h1>
 <%= simple_form_for [@room, @task] do |f| %>
-  <%= f.association  :action, label_method: lambda { |action| "#{action.name}" }%>
+  <%= f.association  :activity, label_method: lambda { |activity| "#{activity.name}" }%>
   <%= f.association  :product, label_method: lambda { |product| "#{product.name}" }%>
   <%= f.association  :element, label_method: lambda { |element| "#{element.name}" }%>
   <%= f.input :number_of_items %>
