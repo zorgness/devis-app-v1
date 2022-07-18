@@ -3,7 +3,7 @@ Grover.configure do |config|
     format: 'A4',
     margin: {
       top: '5px',
-      bottom: '10cm'
+      bottom: '100px'
     },
     user_agent: 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0',
     viewport: {
