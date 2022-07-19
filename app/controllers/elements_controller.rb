@@ -1,6 +1,6 @@
 class ElementsController < ApplicationController
   def index
-    @elements = Element.all
+    @elements = Element.where(user_id: current_user.id)
   end
 
   def new
@@ -9,6 +9,7 @@ class ElementsController < ApplicationController
 
   def create
     @element = Element.new(element_params)
+    @element.user_id = current_user.id
     if @element.save
       redirect_to elements_path
     else
@@ -25,6 +26,6 @@ class ElementsController < ApplicationController
   private
 
   def element_params
-    params.require(:element).permit(:name)
+    params.require(:element).permit(:name, :user_id)
   end
 end

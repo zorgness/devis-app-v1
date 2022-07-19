@@ -13,11 +13,11 @@
 </div>
 
 <div class="quotation-customer">
-  <p style="text-align: end;"><%= @quotation.customer.address.split(",")[0].parameterize.upcase %></p>
+  <p style="text-align: end;"><%= @quotation.customer.address.split(",")[0] ? @quotation.customer.address.split(",")[0].parameterize.upcase : @quotation.customer.address.parameterize.upcase %></p>
 </div>
 
 <div class="quotation-customer">
-  <p style="text-align: end;"><%= @quotation.customer.address.split(",")[1].parameterize.upcase %></p>
+  <p style="text-align: end;"><%= @quotation.customer.address.split(",")[1].parameterize.upcase if @quotation.customer.address.split(",")[1] %></p>
 </div>
 
 

@@ -36,34 +36,34 @@ r.save
 r2 = Room.new(quotation_id: q.id, name: 'salle de bain')
 r2.save
 
-p1 = Product.new(name: 'spot', description: 'spot patère blanc')
+p1 = Product.new(user_id: u.id, name: 'spot', description: 'spot patère blanc')
 p1.save
 
-p2 = Product.new(name: 'climatisation', description: 'climatiseur reversible')
+p2 = Product.new(user_id: u.id, name: 'climatisation', description: 'climatiseur reversible')
 p2.save
 
-p3 = Product.new(name: 'évier', description: 'vasque salle de bain')
+p3 = Product.new(user_id: u.id, name: 'évier', description: 'vasque salle de bain')
 p3.save
 
-e1 = Element.new(name: 'mur')
+e1 = Element.new(user_id: u.id, name: 'mur')
 e1.save
 
-e2 = Element.new(name: 'plafond')
+e2 = Element.new(user_id: u.id, name: 'plafond')
 e2.save
 
-e3 = Element.new(name: 'sol')
+e3 = Element.new(user_id: u.id, name: 'sol')
 e3.save
 
-a1 = Activity.new(name: 'pose')
+a1 = Activity.new(user_id: u.id, name: 'pose')
 a1.save
 
-a2 = Activity.new(name: 'creation')
+a2 = Activity.new(user_id: u.id, name: 'creation')
 a2.save
 
-a3 = Activity.new(name: 'installation')
+a3 = Activity.new(user_id: u.id, name: 'installation')
 a3.save
 
-a4 = Activity.new(name: 'demolition')
+a4 = Activity.new(user_id: u.id, name: 'demolition')
 a4.save
 
 t1 = Task.new(room_id: r.id, product_id: p1.id, activity_id: a1.id, number_of_items: 3)
