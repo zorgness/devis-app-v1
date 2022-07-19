@@ -1,7 +1,7 @@
 <div class="pdf-container">
 <div class="banner-logo-martin">
   <%# <img src="https://i.ibb.co/pZdsJy5/Capture-d-e-cran-2022-07-18-a-17-56-38.png" alt="banner" class="logo-martin" > %>
-  <%= cl_image_tag @quotation.photo.key, class:"logo-martin" %>
+  <%= cl_image_tag @quotation.photos[0].key, class:"logo-martin" %>
 </div>
 <div class="quotation-header">
   <p style="text-decoration: underline; margin-left: 16px;"><strong><%= @quotation.date.strftime("%d/%m/%Y") %></strong></p>
@@ -53,7 +53,7 @@
 
 
 <div class="banner-logo-martin">
-  <img src="https://i.ibb.co/f192RyZ/Capture-d-e-cran-2022-07-19-a-00-23-24.png" alt="banner" class="logo-martin" >
+  <%= cl_image_tag @quotation.photos[1].key, class:"logo-martin" %>
 </div>
 
 
