@@ -10,10 +10,14 @@ class QuotationsController < ApplicationController
   end
 
   def pdf
-    file = URI.open('https://i.ibb.co/pZdsJy5/Capture-d-e-cran-2022-07-18-a-17-56-38.png')
+    file1 = URI.open('https://i.ibb.co/pZdsJy5/Capture-d-e-cran-2022-07-18-a-17-56-38.png')
+    file2 = URI.open('https://i.ibb.co/kSVrSzb/Capture-d-e-cran-2022-07-19-a-13-59-30.png')
+    photos = [file1, file2]
     @quotation = Quotation.find(params[:id])
-    unless @quotation.photo.attached?
-      @quotation.photo.attach(io: file, filename: 'banner.png', content_type: 'image/png')
+    unless @quotation.photos.attached?
+      photos.each_with_index do |photo, index|
+        @quotation.photos.attach(io: photo, filename: "#{index}.png", content_type: 'image/png')
+      end
       @quotation.save
     end
     html_string = render_to_string(
@@ -66,6 +70,6 @@ class QuotationsController < ApplicationController
   private
 
   def quotation_params
-    params.require(:quotation).permit(:number, :date, :customer_id, :total_price, :photo)
+    params.require(:quotation).permit(:number, :date, :customer_id, :total_price, photo: [])
   end
 end
