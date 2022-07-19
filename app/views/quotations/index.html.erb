@@ -1,21 +1,26 @@
+<div data-controller="refresh-list">
 <h1 style="margin:16px;">Tous mes Devis</h1>
 
 <div class="quotation-new">
   <%= link_to 'nouveau devis', new_quotation_path, class: 'btn-flat'%>
 </div>
 
-<div class="quotations-container">
-<% @quotations.each do |quotation|%>
-  <%= link_to quotation_path(quotation) do%>
-      <div class="card text-white bg-dark mb-3" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">Devis N°<%= quotation.number%></h5>
-        <h6 class="card-subtitle mb-2 text-white"><%= quotation.customer.first_name.capitalize%> <%= quotation.customer.last_name.capitalize%></h6>
-        <p class="card-text"><%= quotation.customer.address%></p>
-        <p class="card-text"><%= quotation.date %></p>
+<div class="search-bar" >
+    <%= form_tag quotations_path, method: :get, class: 'd-flex',  data: { refresh_list_target: 'form' }  do %>
+      <%= text_field_tag :query,
+        params[:query],
+         data: {
+          refresh_list_target: 'searchInput', action: "keyup->refresh-list#update"
+                    },
+        class: "form-control",
+        placeholder: "chercher un devis"
+      %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% end %>
+</div>
 
-      </div>
-    </div>
-  <% end %>
-<% end %>
+
+
+
+<%= render "list", quotations: @quotations %>
 </div>

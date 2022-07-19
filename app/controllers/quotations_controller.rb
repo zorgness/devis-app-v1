@@ -2,7 +2,21 @@ require "open-uri"
 
 class QuotationsController < ApplicationController
   def index
-    @quotations = Quotation.where(user_id: current_user.id)
+    if params[:query].present?
+      sql_query = <<~SQL
+        customers.first_name ILIKE :query
+        OR customers.last_name ILIKE :query
+        OR customers.address ILIKE :query
+      SQL
+      @quotations = Quotation.joins(:customer).where(sql_query, query: "%#{params[:query]}%", user_id: current_user.id)
+    else
+      @quotations = Quotation.where(user_id: current_user.id)
+    end
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: 'list.html', locals: { quotations: @quotations } }
+    end
   end
 
   def show

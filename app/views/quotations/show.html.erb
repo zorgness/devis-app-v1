@@ -9,7 +9,7 @@
 </div>
 <div class="quotation-header">
   <h1>Devis N°<%= @quotation.number %></h1>
-  <p><%= @quotation.date %></p>
+  <p><%= @quotation.date.strftime("%d/%m/%Y") %></p>
 </div>
 
 <%= link_to customer_path( @quotation.customer) do %>
