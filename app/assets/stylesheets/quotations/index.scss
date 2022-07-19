@@ -4,6 +4,9 @@
   align-items: center;
   gap: 16px;
   flex-wrap: wrap;
+  a {
+    text-decoration: none;
+  }
 }
 
 .quotation-new {
