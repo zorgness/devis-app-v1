@@ -1,3 +1,5 @@
+require "open-uri"
+
 class QuotationsController < ApplicationController
   def index
     @quotations = Quotation.where(user_id: current_user.id)
@@ -8,7 +10,12 @@ class QuotationsController < ApplicationController
   end
 
   def pdf
+    file = URI.open('https://i.ibb.co/pZdsJy5/Capture-d-e-cran-2022-07-18-a-17-56-38.png')
     @quotation = Quotation.find(params[:id])
+    unless @quotation.photo.attached?
+      @quotation.photo.attach(io: file, filename: 'banner.png', content_type: 'image/png')
+      @quotation.save
+    end
     html_string = render_to_string(
       {
         template: 'quotations/pdf.html.erb',
@@ -59,6 +66,6 @@ class QuotationsController < ApplicationController
   private
 
   def quotation_params
-    params.require(:quotation).permit(:number, :date, :customer_id, :total_price)
+    params.require(:quotation).permit(:number, :date, :customer_id, :total_price, :photo)
   end
 end
