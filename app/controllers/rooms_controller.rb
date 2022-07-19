@@ -2,7 +2,7 @@ class RoomsController < ApplicationController
 
   def new
     @quotation = Quotation.find(params[:quotation_id])
-    rooms_collection = ['chambre', 'salon', 'salle de bain', 'jardin', 'escalier', 'hall', 'couloir', 'toit', 'terrasse']
+    rooms_collection = ['chambre', 'salon', 'salle de bain', 'cuisine', 'jardin', 'escalier', 'hall', 'couloir', 'toit', 'toiture', 'terrasse', 'étage', 'garage']
     rooms = []
     @quotation.rooms.each do |room|
       rooms << room.name
