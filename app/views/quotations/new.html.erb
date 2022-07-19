@@ -1,7 +1,8 @@
 <h1>Nouveau devis</h1>
 <%= simple_form_for [@customer,@quotation] do |f| %>
   <%= f.association :customer, label_method: lambda { |customer| "#{customer.first_name}  #{customer.last_name}" }%>
-  <%= f.input :number %>
+  <label style="color: green;">Devis précédent: <strong><%= Quotation.last.number %></strong></label>
+  <%= f.input :number, label: 'Numero du devis' %>
   <%= f.input :date %>
   <%= f.input :total_price%>
   <%= f.button :submit, class: 'btn btn-gradient'%>

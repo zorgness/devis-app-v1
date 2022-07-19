@@ -1,12 +1,12 @@
 <h1>Nouveau client</h1>
 <%= simple_form_for [@customer] do |f| %>
-  <%= f.input :first_name %>
-  <%= f.input :last_name%>
+  <%= f.input :first_name, label: 'Prenom' %>
+  <%= f.input :last_name, label: 'Nom'%>
   <%= f.input :email%>
   <%= f.input :phone%>
-  <%= f.input :address%>
+  <%= f.input :address, label: 'Adresse'%>
   <label for="">si besoin</label>
-  <%= f.input :address_2%>
+  <%= f.input :address_2, label: 'Adresse 2'%>
 
   <%= f.button :submit, class: 'btn btn-gradient'%>
 <% end %>

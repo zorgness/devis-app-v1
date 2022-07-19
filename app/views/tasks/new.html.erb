@@ -1,9 +1,9 @@
 <h1><%= @room.name.capitalize %></h1>
 <%= simple_form_for [@room, @task] do |f| %>
-  <%= f.association  :activity, label_method: lambda { |activity| "#{activity.name}" }%>
-  <%= f.association  :product, label_method: lambda { |product| "#{product.name}" }%>
+  <%= f.association  :activity, label: 'Action', label_method: lambda { |activity| "#{activity.name}" }%>
+  <%= f.association  :product, label: 'Produits',label_method: lambda { |product| "#{product.name}" }%>
+  <%= f.input :number_of_items,label: 'Nombre unitées' %>
   <%= f.association  :element, label_method: lambda { |element| "#{element.name}" }%>
-  <%= f.input :number_of_items %>
-  <%= f.input :m2 %>
+  <%= f.input :m2, label: 'Mesure en m2' %>
   <%= f.button :submit, class: 'btn btn-gradient'%>
 <% end %>
