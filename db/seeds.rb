@@ -21,7 +21,7 @@ u.save
 c = Customer.new(first_name: 'denis', last_name: 'trolel', email: 'denis@gmail.com', address: '5 rue fortia, Marseille', phone: '0708091112', user_id: u.id)
 c.save
 
-c2 = Customer.new(first_name: 'marc', last_name: 'dubois', email: 'marc@gmail.com', address: '19 rue pavillion, Aix-en-Provence', phone: '0666778899', user_id: u.id)
+c2 = Customer.new(first_name: 'marc', last_name: 'dubois', email: 'marc@gmail.com', address: '19 rue pavillon, Aix-en-Provence', phone: '0666778899', user_id: u.id)
 c2.save
 
 q = Quotation.new(user_id: u.id, customer_id: c.id, number: 221224, date: Date.today, total_price: 3400)

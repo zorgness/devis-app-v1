@@ -1,5 +1,7 @@
 <div class="customer-container">
-<h1 style="text-align:center;"><%= @customer.first_name %> <%= @customer.last_name %> </h1>
+<%= link_to new_quotation_path do %>
+  <h1 style="text-align:center;"><%= @customer.first_name.capitalize%>  <%= @customer.last_name.capitalize %> </h1>
+<% end %>
 
 
 <p><%= @customer.email %></p>
@@ -25,8 +27,9 @@
 </div>
 </div>
 
-
- <div style="width: 70%; height: 150px; filter: drop-shadow(-2px -2px 4px rgba(0, 0, 0, 0.25)) drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.25));"
+<div class="map-container">
+  <div style="width: 88%; height: 240px; filter: drop-shadow(-2px -2px 4px rgba(0, 0, 0, 0.25)) drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.25));"
         data-controller="mapbox"
         data-mapbox-marker-value="<%= @marker.to_json %>"
         data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+</div>
