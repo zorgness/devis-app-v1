@@ -1,5 +1,7 @@
 <div class="customer-container">
+<%= link_to new_quotation_path  do %>
 <h1 style="text-align:center;"><%= @customer.first_name %> <%= @customer.last_name %> </h1>
+<% end %>
 
 
 <p><%= @customer.email %></p>
