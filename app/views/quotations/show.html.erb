@@ -50,4 +50,7 @@
   <%= link_to "Editer devis",  edit_quotation_path(@quotation), class: 'button-34 darker' %>
   <%= link_to "Exporter en pdf", pdf_path(@quotation), class: 'button-34 purple'%>
   <%= link_to "Supprimer",  quotation_path(@quotation), method: :delete, class: 'button-34 red', data: { confirm: "Are you sure?" } %>
+  <%= link_to 'Actions', activities_path, class: 'button-34 hotgreen' %>
+  <%= link_to 'Elements', elements_path, class: 'button-34 skyblue' %>
+  <%= link_to 'Produits', products_path, class: 'button-34 orange' %>
 </div>
