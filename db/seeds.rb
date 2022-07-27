@@ -23,6 +23,7 @@ c = Customer.new(first_name: 'denis', last_name: 'trolel', email: 'denis@gmail.c
 c.save
 
 c2 = Customer.new(first_name: 'marc', last_name: 'dubois', email: 'marc@gmail.com', address: '19 rue pavillon, Aix-en-Provence', phone: '0666778899', user_id: user1.id)
+
 c2.save
 
 q = Quotation.new(user_id: user1.id, customer_id: c.id, number: 221224, date: Date.today, total_price: 3400)
@@ -111,3 +112,4 @@ User.all.each do |u|
     a11 = Activity.new(user_id: u.id, name: 'ouverture')
     a11.save
 end
+
