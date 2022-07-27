@@ -5,6 +5,11 @@ class CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
+    @marker =
+      {
+        lat: @customer.latitude,
+        lng: @customer.longitude
+      }
   end
 
   def new
