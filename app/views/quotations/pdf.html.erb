@@ -36,7 +36,7 @@
     <% room.tasks.each do |task|%>
 
     <ul>
-      <li><%= task.activity.name.parameterize.upcase %> <%= "#{task.product.name.parameterize.upcase}(S)" if task.product  %> <%= "#{task.element.name.parameterize.upcase}(S)" if task.element %> <%= "#{task.number_of_items} UNITEE(S)" if task.number_of_items  %> <%= "#{task.m2} M2" if task.m2  %>  </li>
+      <li><%= task.activity.name.parameterize.upcase %> <%= "#{task.product.name.parameterize.upcase}" if task.product  %> <%= "#{task.element.name.parameterize.upcase}" if task.element %> <%= "#{task.number_of_items} UNITEE(S)" if task.number_of_items  %> <%= "#{task.m2} M2" if task.m2  %> <%= task.description.empty? ?  "" : "( #{task.description.parameterize.upcase } )"   %>  </li>
     </ul>
 
     <% end %>
