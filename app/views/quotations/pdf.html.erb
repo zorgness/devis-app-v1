@@ -1,7 +1,7 @@
 <div class="pdf-container">
 <div class="banner-logo-martin">
   <%# <img src="https://i.ibb.co/pZdsJy5/Capture-d-e-cran-2022-07-18-a-17-56-38.png" alt="banner" class="logo-martin" > %>
-  <%= cl_image_tag @quotation.photos[0].key, class:"logo-martin" %>
+  <%= cl_image_tag @quotation.photos[0].key, class:"logo-martin", :width => 860 %>
 </div>
 <div class="quotation-header">
   <p style="text-decoration: underline; margin-left: 16px;"><strong><%= @quotation.date.strftime("%d/%m/%Y") %></strong></p>
@@ -45,6 +45,8 @@
 
 <div>
   <p style="text-align:center;">Prix forfaitaire :  <strong><%= @quotation.total_price %></strong> Euros</p>
+  <p style="text-align:center;"><strong>TVA non applicable -Article 293 B du CGI</strong></p>
+
 </div>
 
 <div class="signature">
@@ -53,7 +55,7 @@
 
 
 <div class="banner-logo-martin">
-  <%= cl_image_tag @quotation.photos[1].key, class:"logo-martin" %>
+  <%= cl_image_tag @quotation.photos[1].key, class:"logo-martin", :width => 860  %>
 </div>
 
 
