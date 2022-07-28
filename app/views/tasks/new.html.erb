@@ -5,6 +5,7 @@
   <%= f.input :number_of_items,label: 'Nombre unitées' %>
   <%= f.association  :element, label_method: lambda { |element| "#{element.name}" }%>
   <%= f.input :m2, label: 'Mesure en m2' %>
+  <%= f.input :description, label: 'Description si besoin' %>
   <%= f.button :submit, class: 'btn btn-gradient'%>
 <% end %>
 

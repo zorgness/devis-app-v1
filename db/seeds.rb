@@ -41,13 +41,13 @@ r2.save
 
 User.all.each do |u|
 
-    p1 = Product.new(user_id: u.id, name: 'spot', description: 'spot patère blanc')
+    p1 = Product.new(user_id: u.id, name: 'spot')
     p1.save
 
-    p2 = Product.new(user_id: u.id, name: 'climatisation', description: 'climatiseur reversible')
+    p2 = Product.new(user_id: u.id, name: 'climatisation')
     p2.save
 
-    p3 = Product.new(user_id: u.id, name: 'évier', description: 'vasque salle de bain')
+    p3 = Product.new(user_id: u.id, name: 'évier')
     p3.save
 
     p4 = Product.new(user_id: u.id, name: 'parquet')
@@ -112,4 +112,3 @@ User.all.each do |u|
     a11 = Activity.new(user_id: u.id, name: 'ouverture')
     a11.save
 end
-

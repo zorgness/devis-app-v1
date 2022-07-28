@@ -31,7 +31,7 @@
     <% room.tasks.each do |task|%>
 
     <ul>
-      <li><%= task.activity.name.capitalize %> <%= "#{task.product.name}(s)" if task.product  %> <%= "#{task.element.name}" if task.element %> <%= "#{task.number_of_items} unitée(s)" if task.number_of_items  %> <%= "#{task.m2} m2" if task.m2  %>  <%= link_to task_path(task), method: :delete, data: { confirm: "Are you sure?" } do %>
+      <li><%= task.activity.name.capitalize %> <%= "#{task.product.name}(s)" if task.product  %> <%= "#{task.element.name}" if task.element %> <%= "#{task.number_of_items} unitée(s)" if task.number_of_items  %> <%= "#{task.m2} m2" if task.m2  %> <%= "( #{task.description.capitalize } )" if task.description %> <%= link_to task_path(task), method: :delete, data: { confirm: "Are you sure?" } do %>
                                 <i class="fa-solid fa-trash" style=" font-size: 20px; color: black; margin-left: 16px"></i>
                               <% end %> </li>
     </ul>
