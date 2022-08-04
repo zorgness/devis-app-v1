@@ -7,7 +7,7 @@
 
 
 <p><%= @customer.email %></p>
-<p><%= @customer.phone %></p>
+<p><a href="tel://+33<%= @customer.phone[1..-1] %>"><%= @customer.phone.insert(2, ' ').insert(5, ' ').insert(8, ' ').insert(11, ' ')  %><a></p>
 <p><%= @customer.address%></p>
 
 <% if @customer.address_2 %>
